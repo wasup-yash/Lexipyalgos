@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "convexipy"
+version = "1.0.0"
+description = "Production-ready abstract convexity spaces: validation, convex hulls, N-ary enumeration, and binomial-transform identities."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Convexipy Contributors" }
+]
+requires-python = ">=3.9"
+keywords = [
+    "convexity",
+    "abstract convexity",
+    "closure operator",
+    "closure system",
+    "combinatorics",
+    "enumeration",
+    "OEIS",
+    "formal concept analysis",
+    "preorder",
+    "topology",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+# No third-party runtime dependencies: the library is pure-Python stdlib
+# (itertools, math, json, dataclasses, typing) by design, for maximal
+# embeddability in larger systems.
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "mypy>=1.0",
+    "ruff>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/example-org/convexipy"
+Repository = "https://github.com/example-org/convexipy"
+Issues = "https://github.com/example-org/convexipy/issues"
+"Reference Paper" = "https://arxiv.org/abs/2606.11252"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+convexipy = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+packages = ["convexipy"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
